@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { ethers } from 'ethers';
 
 const gasDataStore = defineStore({
     id: 'gasDataStore',
@@ -10,7 +11,9 @@ const gasDataStore = defineStore({
         gasUsagePercentArray: [],
     }),
     actions: {
-
+        async getBlocks() {
+            
+        }
     }
 })
 
