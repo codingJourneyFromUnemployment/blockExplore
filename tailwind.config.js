@@ -18,13 +18,18 @@ export default {
             veryDarkBlue: 'hsl(233, 12%, 13%)',
             veryPaleRed: 'hsl(13, 100%, 96%)',
             veryLightGray: 'hsl(0, 0%, 98%)',
-            }
+            },
+        fontFamily: {
+            'roboto': ['Roboto', 'sans-serif'],
+            },
         },
     container: {
         center: true,
         padding: '2rem',
         },
     },
-  plugins: [],
+    plugins: [
+      require('@tailwindcss/forms'),
+      ],
 }
 
