@@ -30,18 +30,24 @@ export default {
         }
     },
     methods: {
+        async fetchData() {
+            await this.gasData.getBlockNumberArr();
+            this.blockNumberArr = this.gasData.blockNumberArray;
+            await this.gasData.getBaseFeePerGasArr();
+            this.baseFeePerGasArr = this.gasData.baseFeePerGasArray;
+            await this.gasData.getGasUsagePercentArr();
+            this.gasUsagePercentArr = this.gasData.gasUsagePercentArray;
+        }
         
     },
     computed: {
         
     },
     async created() {
-        await this.gasData.getBlockNumberArr();
-        this.blockNumberArr = this.gasData.blockNumberArray;
-        await this.gasData.getBaseFeePerGasArr();
-        this.baseFeePerGasArr = this.gasData.baseFeePerGasArray;
-        await this.gasData.getGasUsagePercentArr();
-        this.gasUsagePercentArr = this.gasData.gasUsagePercentArray;
+        while(true) {
+            await this.fetchData();
+            await new Promise(resolve => setTimeout(resolve, 1200));
+        }
     },
 }
 
