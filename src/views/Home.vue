@@ -1,6 +1,11 @@
 <template>
     <div class="home">
-        Hello World!
+        <div>
+            baseFeePerGasArr:{{ baseFeePerGasArr }}
+        </div>
+        <div>
+            gasUsagePercentArr:{{ gasUsagePercentArr }}
+        </div>
     </div>
 </template>
 
@@ -14,8 +19,14 @@ export default {
     },
     data() {
         const gasData = gasDataStore();
+        const blockNumberArr = [];
+        const baseFeePerGasArr = [];
+        const gasUsagePercentArr = [];
         return {
             gasData,
+            blockNumberArr,
+            baseFeePerGasArr,
+            gasUsagePercentArr,
         }
     },
     methods: {
@@ -24,8 +35,13 @@ export default {
     computed: {
         
     },
-    created() {
-        console.log('Home.vue created');        
+    async created() {
+        await this.gasData.getBlockNumberArr();
+        this.blockNumberArr = this.gasData.blockNumberArray;
+        await this.gasData.getBaseFeePerGasArr();
+        this.baseFeePerGasArr = this.gasData.baseFeePerGasArray;
+        await this.gasData.getGasUsagePercentArr();
+        this.gasUsagePercentArr = this.gasData.gasUsagePercentArray;
     },
 }
 
