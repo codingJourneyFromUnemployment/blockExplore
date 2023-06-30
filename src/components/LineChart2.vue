@@ -14,7 +14,7 @@ import {Chart as ChartJS, Title, Legend, Tooltip, LineController, LinearScale, P
 ChartJS.register(Title, Legend, Tooltip, LineController, LinearScale, CategoryScale, PointElement, LineElement)
 
 export default {
-    name: 'LineChart1',
+    name: 'LineChart2',
     components: {
         Line,
     },
@@ -26,13 +26,7 @@ export default {
                 labels: this.blockNumberArr,
                 datasets: [
                     {
-                        label: 'baseFeePerGas',
-                        data: this.baseFeePerGasArr,
-                        borderColor: '#FC2525',
-                        fill: false,
-                    },
-                    {
-                        label: 'gasUsagePercent',
+                        label: 'Gas Usage Percentage %',
                         data: this.gasUsagePercentArr,
                         borderColor: '#05CBE1',
                         fill: false,
@@ -48,19 +42,12 @@ export default {
     methods: {
         async fetchData() {
             await this.gasData.getBlockNumberArr();
-            await this.gasData.getBaseFeePerGasArr();
             await this.gasData.getGasUsagePercentArr();
             this.chartData = {
                 labels: this.gasData.blockNumberArray,
                 datasets: [
                     {
-                        label: 'baseFeePerGas',
-                        data: this.gasData.baseFeePerGasArray,
-                        borderColor: '#FC2525',
-                        fill: false,
-                    },
-                    {
-                        label: 'gasUsagePercent',
+                        label: 'Gas Usage Percentage %',
                         data: this.gasData.gasUsagePercentArray,
                         borderColor: '#05CBE1',
                         fill: false,

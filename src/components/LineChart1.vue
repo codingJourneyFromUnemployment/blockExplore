@@ -26,17 +26,11 @@ export default {
                 labels: this.blockNumberArr,
                 datasets: [
                     {
-                        label: 'baseFeePerGas',
+                        label: 'Base Fee Per Gas',
                         data: this.baseFeePerGasArr,
                         borderColor: '#FC2525',
                         fill: false,
                     },
-                    {
-                        label: 'gasUsagePercent',
-                        data: this.gasUsagePercentArr,
-                        borderColor: '#05CBE1',
-                        fill: false,
-                    }
                 ]
             },
             chartOptions: {
@@ -49,22 +43,15 @@ export default {
         async fetchData() {
             await this.gasData.getBlockNumberArr();
             await this.gasData.getBaseFeePerGasArr();
-            await this.gasData.getGasUsagePercentArr();
             this.chartData = {
                 labels: this.gasData.blockNumberArray,
                 datasets: [
                     {
-                        label: 'baseFeePerGas',
+                        label: 'Base Fee Per Gas',
                         data: this.gasData.baseFeePerGasArray,
                         borderColor: '#FC2525',
                         fill: false,
                     },
-                    {
-                        label: 'gasUsagePercent',
-                        data: this.gasData.gasUsagePercentArray,
-                        borderColor: '#05CBE1',
-                        fill: false,
-                    }
                 ]
             }
         } 
