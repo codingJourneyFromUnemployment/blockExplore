@@ -2,7 +2,8 @@
     <div class="container">
         <Line 
             :data="chartData" 
-            :options="chartOptions">
+            :options="chartOptions"
+            class="h-40 md:h-64">
         </Line>
     </div>
 </template>
@@ -26,9 +27,12 @@ export default {
                 labels: this.blockNumberArr,
                 datasets: [
                     {
-                        label: 'Gas Usage Percentage %',
+                        label: 'Gas Usage Percentage (%)',
                         data: this.gasUsagePercentArr,
-                        borderColor: '#05CBE1',
+                        borderColor: 'hsl(228, 39%, 23%)',
+                        backgroundColor: 'hsl(228, 39%, 23%)',
+                        xAxisID: 'x',
+                        yAxisID: 'y',
                         fill: false,
                     }
                 ]
@@ -36,6 +40,28 @@ export default {
             chartOptions: {
                 responsive: true,
                 maintainAspectRatio: false,
+                scales:{
+                    x:{
+                        title:{
+                            display:true,
+                            text:'Block Number',
+                            align: 'start',
+                            font: {
+                                size: 10,
+                            },
+                        },
+                    },
+                    y:{
+                        title:{
+                            display:true,
+                            text:'percentage',
+                            align: 'end',
+                            font: {
+                                size: 10,
+                            },
+                        },
+                    },
+                }
             }
         }
     },
@@ -47,9 +73,9 @@ export default {
                 labels: this.gasData.blockNumberArray,
                 datasets: [
                     {
-                        label: 'Gas Usage Percentage %',
+                        label: 'Gas Usage Percentage (%)',
                         data: this.gasData.gasUsagePercentArray,
-                        borderColor: '#05CBE1',
+                        borderColor: 'hsl(228, 39%, 23%)',
                         fill: false,
                     }
                 ]

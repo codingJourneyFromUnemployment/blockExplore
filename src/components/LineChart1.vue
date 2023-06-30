@@ -1,8 +1,9 @@
 <template>
-    <div class="container">
+    <div class="container flex flex-row space-x-0 relative">
         <Line 
             :data="chartData" 
-            :options="chartOptions">
+            :options="chartOptions"
+            class="h-40 ml-0 pl-0 md:h-64">
         </Line>
     </div>
 </template>
@@ -26,9 +27,12 @@ export default {
                 labels: this.blockNumberArr,
                 datasets: [
                     {
-                        label: 'Base Fee Per Gas',
+                        label: 'Base Fee Per Gas (gwei)',
                         data: this.baseFeePerGasArr,
-                        borderColor: '#FC2525',
+                        borderColor: 'hsl(12, 88%, 69%)',
+                        backgroundColor: 'hsl(12, 88%, 69%)',
+                        xAxisID: 'x',
+                        yAxisID: 'y',
                         fill: false,
                     },
                 ]
@@ -36,6 +40,28 @@ export default {
             chartOptions: {
                 responsive: true,
                 maintainAspectRatio: false,
+                scales:{
+                    x:{
+                        title:{
+                            display:true,
+                            text:'Block Number',
+                            align: 'start',
+                            font: {
+                                size: 10,
+                            },
+                        },
+                    },
+                    y:{
+                        title:{
+                            display:true,
+                            text:'gwei',
+                            align: 'end',
+                            font: {
+                                size: 10,
+                            },
+                        },
+                    },
+                }
             }
         }
     },
@@ -47,10 +73,12 @@ export default {
                 labels: this.gasData.blockNumberArray,
                 datasets: [
                     {
-                        label: 'Base Fee Per Gas',
+                        label: 'Base Fee Per Gas (gwei)',
                         data: this.gasData.baseFeePerGasArray,
-                        borderColor: '#FC2525',
+                        borderColor: 'hsl(12, 88%, 69%)',
                         fill: false,
+                        xAxisID: 'x',
+                        yAxisID: 'y',
                     },
                 ]
             }

@@ -22,6 +22,9 @@ export default {
             fontFamily: {
                 'roboto': ['Roboto', 'sans-serif'],
             },
+            fontSize: {
+                'tinyTitle': '10px',
+            }
         },
         container: {
             center: true,
