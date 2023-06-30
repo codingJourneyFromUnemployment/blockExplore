@@ -14,7 +14,7 @@ const gasDataStore = defineStore({
             const provider = new ethers.providers.AlchemyProvider('homestead', this.apiKey);
             const latestBlockNumber = await provider.getBlockNumber();
             const blockNumberArray = [];
-            for (let i = 0; i < 10; i++) {
+            for (let i = 9; i >= 0; i--) {
                 blockNumberArray.push(latestBlockNumber - i);
             }
             this.blockNumberArray = blockNumberArray;

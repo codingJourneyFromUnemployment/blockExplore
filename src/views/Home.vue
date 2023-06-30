@@ -40,9 +40,6 @@ export default {
         }
         
     },
-    computed: {
-        
-    },
     async created() {
         while(true) {
             await this.fetchData();
@@ -56,3 +53,5 @@ export default {
 <style scoped>
 
 </style>
+
+  
